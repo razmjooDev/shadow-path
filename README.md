@@ -1,8 +1,12 @@
-# ProtonVPN for Android
+# Shadow Path
 
-Copyright (c) 2019 Proton AG
+A privacy-focused VPN application for Android, forked from ProtonVPN.
 
-## Download
+## About
+
+Shadow Path is built upon the open-source ProtonVPN Android application, providing secure and private internet access.
+
+## Screenshots
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/ProtonVPN/android-app/master/metadata/en-US/images/phoneScreenshots/2.jpg" height="400">
@@ -11,66 +15,78 @@ Copyright (c) 2019 Proton AG
     <img src="https://raw.githubusercontent.com/ProtonVPN/android-app/master/metadata/en-US/images/phoneScreenshots/5.jpg" height="400">
 </p>
 
-<p align="center">
-    <a href="https://play.google.com/store/apps/details?id=ch.protonvpn.android">
-        <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">
-    </a>
-    <a href="https://f-droid.org/packages/ch.protonvpn.android">
-        <img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">
-    </a>
-    <a href="https://github.com/ProtonVPN/android-app/releases">
-        <img src="https://i.postimg.cc/kXfbyWjL/get-it-on-github.png" alt="Get it on GitHub" height="80">
-    </a>
-</p>
+## Build Instructions
 
-## Build instructions
-- Install sdk, ndk, cmake, swig
-- Clone this repository
-- `./gradlew assembleProductionVanillaOpenSourceDebug` or open and build in Android Studio
+### Prerequisites
+- Android SDK
+- Android NDK
+- CMake
+- SWIG
 
-### Build release
-To complete a release build signing keys need to be provided:
-- `./gradlew assembleProductionVanillaOpenSourceRelease -PkeyStoreFilePath=<keystore> -PkeyStoreKeyAlias=<alias> -PkeyStorePassword=<pass> -PkeyStoreKeyPassword=<key-pass>`
+### Debug Build
+1. Clone this repository
+2. Run: `./gradlew assembleProductionVanillaOpenSourceDebug`
 
-## Code style
-Project uses agreed code style ProtonStyle.xml for java. Import it in Android studio via ```File>>Settings>>Editor>>Code style>>Import Scheme```
-For kotlin's code style we use ktlint with default rules
+   Or open the project in Android Studio and build from there
+
+### Release Build
+To build a release version, you need to provide signing keys:
+
+```bash
+./gradlew assembleProductionVanillaOpenSourceRelease \
+  -PkeyStoreFilePath=<keystore> \
+  -PkeyStoreKeyAlias=<alias> \
+  -PkeyStorePassword=<pass> \
+  -PkeyStoreKeyPassword=<key-pass>
+```
+
+## Code Style
+
+### Java
+Import the ProtonStyle.xml code style in Android Studio:
+```
+File >> Settings >> Editor >> Code Style >> Import Scheme
+```
+
+### Kotlin
+The project uses ktlint with default rules for Kotlin code formatting.
 
 ## Contributing
-If you would like to contribute, please keep in mind the following rules:
-- Try to stick to the project's existing code style and naming conventions
-- The code base is mostly written in Java, but we are transitioning to Kotlin, so new code should be written in Kotlin where possible
-- Our preferred tech stack is Kotlin, MVVM, data-binding and coroutines, so any new features or large refactors should conform to this preferred tech stack
-- After adding/updating open source dependencies run `gradlew updateLicensesJson` to update attributions.
 
-Internally our CI automatically checks all pull requests for code style issues, and runs our tests. However you can run those locally as well.
-```
+We welcome contributions! Please follow these guidelines:
+
+- Adhere to the project's existing code style and naming conventions
+- New code should be written in Kotlin where possible (we're transitioning from Java)
+- Use our preferred tech stack: Kotlin, MVVM, data-binding, and coroutines
+- After updating open source dependencies, run `gradlew updateLicensesJson` to update attributions
+
+### Running Tests Locally
+
+```bash
 gradlew checkstyle
 gradlew detekt
 gradlew test
 gradlew androidTest
 ```
 
-By making a contribution to this project you agree to the following:
+### Contribution Agreement
 
-1. I assign any and all copyright related to the contribution to Proton AG;
-2. I certify that the contribution was created in whole by me;
-3. I understand and agree that this project and the contribution are public and that a record of the contribution (including all personal information I submit with it) is maintained indefinitely and may be redistributed with this project or the open source license(s) involved.
+By contributing to this project, you agree to the following:
 
-## Signature
-
-All our builds (except for F-droid) will be signed with same key.
-SHA256 fingerprint for signing certificate
-```
-ch.protonvpn.android
-DC:C9:43:9E:C1:A6:C6:A8:D0:20:3F:34:23:EE:42:BC:C8:B9:70:62:8E:53:CB:73:A0:39:3F:39:8D:D5:B8:53
-```
+1. I assign any and all copyright related to the contribution to the project maintainers
+2. I certify that the contribution was created in whole by me
+3. I understand and agree that this project and the contribution are public and that a record of the contribution (including all personal information I submit with it) is maintained indefinitely and may be redistributed with this project or the open source license(s) involved
 
 ## Versioning
-- Version matches format: `[major][minor][patch][hotfix]`
+
+Version format: `[major][minor][patch][hotfix]`
 
 ## License
 
 The code and datafiles in this distribution are licensed under the terms of the GPLv3 as published by the Free Software Foundation. See <https://www.gnu.org/licenses/> for a copy of this license.
 
-Copyright (c) 2019 Proton AG
+Original code copyright (c) 2019 Proton AG
+
+---
+
+**Note:** This is a fork of the ProtonVPN Android application. The original project can be found at [ProtonVPN/android-app](https://github.com/ProtonVPN/android-app).
